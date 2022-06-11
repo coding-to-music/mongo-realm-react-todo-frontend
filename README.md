@@ -1,3 +1,39 @@
+# mongo-realm-react-todo-frontend
+
+# 🚀 Javascript full-stack 🚀
+
+https://github.com/coding-to-music/mongo-realm-react-todo-frontend
+
+https://mongo-realm-react-todo-frontend.vercel.app
+
+Backend:
+
+https://github.com/coding-to-music/mongo-realm-react-todo-tracker
+
+From / By https://www.mongodb.com/docs/realm/tutorial/backend-app/
+
+https://www.mongodb.com/docs/realm/tutorial/web-graphql/#std-label-tutorial-task-tracker-web
+
+https://github.com/mongodb-university/realm-tutorial-web
+
+## Environment variables:
+
+```java
+
+```
+
+## GitHub
+
+```java
+git init
+git add .
+git remote remove origin
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:coding-to-music/mongo-realm-react-todo-frontend.git
+git push -u origin main
+```
+
 # Realm Web and GraphQL Tutorial
 
 Follow along at https://www.mongodb.com/docs/realm/tutorial/web-graphql/

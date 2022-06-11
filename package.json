@@ -1,5 +1,5 @@
 {
-  "name": "task-tracker",
+  "name": "mongo-realm-react-todo-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -28,6 +28,8 @@
     "validator": "^13.7.0"
   },
   "scripts": {
+    "vercel": "npm run deploy && vercel --prod",
+    "deploy": "git add . && git commit -m Build && git push",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
