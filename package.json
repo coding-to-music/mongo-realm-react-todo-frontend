@@ -29,6 +29,7 @@
   },
   "scripts": {
     "vercel": "npm run deploy && vercel --prod",
+    "mongohost": "npm run deploy && npm run build && cp -a ./build/ ./hosting/files && realm-cli push --remote=tasktracker-bmumi --include-hosting",
     "deploy": "git add . && git commit -m Build && git push",
     "start": "react-scripts start",
     "build": "react-scripts build",
