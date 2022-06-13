@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import LGButton from "@leafygreen-ui/button";
 import StatusChange from "./StreetStatusChange";
-import useStreetMutations from "../graphql/StreetUseStreetMutations";
+import useStreetMutations from "../graphql/useStreetMutations";
 
 // Use a hook to dynamically create status update buttons for the specified project
 export default function useChangeStreetStatusButton(project) {
