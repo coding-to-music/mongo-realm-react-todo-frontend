@@ -7,7 +7,7 @@ import useStreetMutations from "../graphql/useStreetMutations";
 // Use a hook to dynamically create status update buttons for the specified project
 export default function useChangeStreetStatusButton(project) {
   const { updateStreet } = useStreetMutations(project);
-  const ChangeStreetStatusButton = ({ Street, fromStatus, toStatus, children }) => {
+  const ChangeStreetStatusButton = ({ street, fromStatus, toStatus, children }) => {
     return (
       <Button onClick={() => updateStreet(street, { status: toStatus })}>
         <ButtonContent>
