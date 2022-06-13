@@ -56,7 +56,7 @@ export default function Sidebar({
             </SectionListItem>
           ))}
         </SectionList>
-        <UserDetails
+        {/* <UserDetails
           user={app.currentUser}
           handleLogout={() => {
             app.logOut();
@@ -64,7 +64,7 @@ export default function Sidebar({
           handleEditPermissions={() => {
             setIsEditingPermissions(true);
           }}
-        />
+        /> */}
       </Card>
     </SidebarContainer>
   );
