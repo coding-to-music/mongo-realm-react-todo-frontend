@@ -9,16 +9,18 @@ import { uiColors } from "@leafygreen-ui/palette";
 export default function Sidebar({
   currentProject,
   setCurrentProject,
+  currentStreet,
+  setCurrentStreet,
   setIsEditingPermissions,
 }) {
   const projects = useProjects();
+  const streets = useStreets();
   const app = useRealmApp();
 
   return (
     <SidebarContainer>
       <Card>
         <SectionHeading>Projects</SectionHeading>
-        <SectionHeading>Projects</SectionHeading>
         <SectionList>
           {projects.map((project) => (
             <SectionListItem
@@ -30,26 +32,6 @@ export default function Sidebar({
             </SectionListItem>
           ))}
         </SectionList>
-        <SectionList>
-          {projects.map((project) => (
-            <SectionListItem
-              key={project.partition}
-              onClick={() => setCurrentProject(project)}
-              isSelected={project.partition === currentProject?.partition}
-            >
-              {project.name}
-            </SectionListItem>
-          ))}
-        </SectionList>
-        <UserDetails
-          user={app.currentUser}
-          handleLogout={() => {
-            app.logOut();
-          }}
-          handleEditPermissions={() => {
-            setIsEditingPermissions(true);
-          }}
-        />
         <UserDetails
           user={app.currentUser}
           handleLogout={() => {
@@ -61,39 +43,18 @@ export default function Sidebar({
         />
       </Card>
       <Card>
-        <SectionHeading>Projects</SectionHeading>
-        <SectionHeading>Projects</SectionHeading>
+        <SectionHeading>Streets</SectionHeading>
         <SectionList>
-          {projects.map((project) => (
+          {streets.map((street) => (
             <SectionListItem
-              key={project.partition}
-              onClick={() => setCurrentProject(project)}
-              isSelected={project.partition === currentProject?.partition}
+              key={street.partition}
+              onClick={() => setCurrentStreet(street)}
+              isSelected={street.partition === currentStreet?.partition}
             >
-              {project.name}
+              {street.name}
             </SectionListItem>
           ))}
         </SectionList>
-        <SectionList>
-          {projects.map((project) => (
-            <SectionListItem
-              key={project.partition}
-              onClick={() => setCurrentProject(project)}
-              isSelected={project.partition === currentProject?.partition}
-            >
-              {project.name}
-            </SectionListItem>
-          ))}
-        </SectionList>
-        <UserDetails
-          user={app.currentUser}
-          handleLogout={() => {
-            app.logOut();
-          }}
-          handleEditPermissions={() => {
-            setIsEditingPermissions(true);
-          }}
-        />
         <UserDetails
           user={app.currentUser}
           handleLogout={() => {
