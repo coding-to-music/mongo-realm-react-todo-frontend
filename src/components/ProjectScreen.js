@@ -173,7 +173,7 @@ function TaskList({ currentProject }) {
 }
 
 function StreetList({ currentProject }) {
-  const { tasks, addStreet, loading } = useStreets(currentProject);
+  const { streets, addStreet, loading } = useStreets(currentProject);
   const getStreetById = (id) => streets.find((street) => street._id === id);
   const [selectedStreetId, setSelectedStreetId] = React.useState(null);
   const selectedStreet = getStreetById(selectedStreetId);
