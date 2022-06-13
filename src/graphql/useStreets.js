@@ -20,13 +20,14 @@ export default function useStreets() {
     throw new Error("Cannot list streets if there is no logged in user.");
   }
   const mongodb = app.currentUser.mongoClient("mongodb-atlas");
-  const users = mongodb.db("tracker").collection("User");
-
+  // const users = mongodb.db("tracker").collection("User");
+  const streets = mongodb.db("blogr-nextjs-prisma-postgres").collection("street");
+  
   // set asynchronous event watcher to react to any changes in the users collection
   React.useEffect(() => {
     let changeWatcher;
     (async () => {
-      changeWatcher = users.watch();
+      changeWatcher = streets.watch();
       for await (const change of changeWatcher) {
         setStreetsFromChange(change, setStreets);
       }
