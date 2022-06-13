@@ -3,6 +3,9 @@ import styled from "@emotion/styled";
 import useTasks from "../graphql/useTasks";
 import TaskContent from "./TaskContent";
 import TaskDetailModal from "./TaskDetailModal";
+import useStreets from "../graphql/useStreets";
+import StreetContent from "./StreetContent";
+import StreetDetailModal from "./StreetDetailModal";
 import EditPermissionsModal from "./EditPermissionsModal";
 import Card from "./Card";
 import Button from "@leafygreen-ui/button";
@@ -59,6 +62,30 @@ function useDraftTask({ addTask }) {
     deleteDraftTask,
     setDraftTaskName,
     submitDraftTask,
+  };
+}
+
+function useDraftStreet({ addStreet }) {
+  const [draftStreet, setDraftStreet] = React.useState(null);
+  const createDraftStreet = () => {
+    setDraftStreet({ name: "" });
+  };
+  const deleteDraftStreet = () => {
+    setDraftStreet(null);
+  };
+  const setDraftStreetName = (name) => {
+    setDraftStreet({ name });
+  };
+  const submitDraftStreet = async () => {
+    await addStreet(draftStreet);
+    setDraftStreet(null);
+  };
+  return {
+    draftStreet,
+    createDraftStreet,
+    deleteDraftStreet,
+    setDraftStreetName,
+    submitDraftStreet,
   };
 }
 
@@ -145,6 +172,89 @@ function TaskList({ currentProject }) {
   );
 }
 
+function StreetList({ currentProject }) {
+  const { tasks, addStreet, loading } = useStreets(currentProject);
+  const getStreetById = (id) => streets.find((street) => street._id === id);
+  const [selectedStreetId, setSelectedStreetId] = React.useState(null);
+  const selectedStreet = getStreetById(selectedStreetId);
+
+  const {
+    draftStreet,
+    createDraftStreet,
+    deleteDraftStreet,
+    setDraftStreetName,
+    submitDraftStreet,
+  } = useDraftStreet({ addStreet });
+
+  return loading ? (
+    <Loading />
+  ) : (
+    <>
+      <List>
+        {tasks.length === 0 ? (
+          <StreetListHeader>
+            <h1>No Streets</h1>
+            <p>Click the button below to add a street to this project</p>
+          </StreetListHeader>
+        ) : (
+          tasks.map((street) => (
+            <ListItem key={street._id}>
+              <Card onClick={() => setSelectedStreetId(street._id)}>
+                <StreetContent street={street} />
+              </Card>
+            </ListItem>
+          ))
+        )}
+        {draftStreet ? (
+          <ListItem>
+            <Card>
+              <TextInput
+                type="text"
+                aria-labelledby="street description"
+                placeholder="Do the dishes"
+                onChange={(e) => {
+                  setDraftStreetName(e.target.value);
+                }}
+                value={draftStreet.name}
+              />
+              <ButtonGroup>
+                <Button
+                  variant="primary"
+                  disabled={!draftStreet.name}
+                  onClick={() => {
+                    submitDraftStreet();
+                  }}
+                >
+                  Add
+                </Button>
+                <Button
+                  variant="danger"
+                  onClick={() => {
+                    deleteDraftStreet();
+                  }}
+                >
+                  Cancel
+                </Button>
+              </ButtonGroup>
+            </Card>
+          </ListItem>
+        ) : (
+          <ListItem>
+            <Card>
+              <Button onClick={() => createDraftStreet()}>Add Street</Button>
+            </Card>
+          </ListItem>
+        )}
+      </List>
+      <StreetDetailModal
+        project={currentProject}
+        street={selectedStreet}
+        unselectStreet={setSelectedStreetId}
+      />
+    </>
+  );
+}
+
 const List = styled.ul`
   list-style-type: none;
   padding-left: 0;
@@ -157,6 +267,13 @@ const ListItem = styled.li`
 `;
 
 const TaskListHeader = styled.div`
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: center;
+  font-size: 16px;
+`;
+
+const StreetListHeader = styled.div`
   line-height: 24px;
   letter-spacing: 0px;
   text-align: center;
