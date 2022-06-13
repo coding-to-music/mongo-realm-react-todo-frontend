@@ -119,7 +119,9 @@ function TaskList({ currentProject }) {
             <p>Click the button below to add a task to this project</p>
           </TaskListHeader>
         ) : (
+          <TaskListHeader>
           <h1>Tasks</h1>
+          </TaskListHeader>,
           tasks.map((task) => (
             <ListItem key={task._id}>
               <Card onClick={() => setSelectedTaskId(task._id)}>
