@@ -191,13 +191,13 @@ function StreetList({ currentProject }) {
   ) : (
     <>
       <List>
-        {tasks.length === 0 ? (
+        {streets.length === 0 ? (
           <StreetListHeader>
             <h1>No Streets</h1>
             <p>Click the button below to add a street to this project</p>
           </StreetListHeader>
         ) : (
-          tasks.map((street) => (
+          streets.map((street) => (
             <ListItem key={street._id}>
               <Card onClick={() => setSelectedStreetId(street._id)}>
                 <StreetContent street={street} />
