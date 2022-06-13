@@ -28,7 +28,14 @@ export default function ProjectScreen({
         setIsEditingPermissions={setIsEditingPermissions}
       />
     </Container>
-  );
+    <Container>
+    {currentProject && <StreetList currentProject={currentProject} />}
+    <EditPermissionsModal
+      isEditingPermissions={isEditingPermissions}
+      setIsEditingPermissions={setIsEditingPermissions}
+    />
+  </Container>
+);
 }
 
 const Container = styled.div`
