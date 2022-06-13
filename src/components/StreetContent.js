@@ -5,7 +5,7 @@ import StatusBadge from "./StreetStatusBadge";
 export default function StreetContent({ street }) {
   return (
     <StreetDescription>
-      <StreetName>{street.name}</TaskName>
+      <StreetName>{street.name}</StreetName>
       <StatusBadge status={street.status} />
     </StreetDescription>
   );
