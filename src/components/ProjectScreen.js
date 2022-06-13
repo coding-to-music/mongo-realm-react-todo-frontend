@@ -235,6 +235,15 @@ function StreetList({ currentProject }) {
                 }}
                 value={draftStreet.name}
               />
+              <TextInput
+                type="text"
+                aria-labelledby="from description"
+                placeholder="From Cross Street Name"
+                onChange={(e) => {
+                  setDraftStreetFrom(e.target.value);
+                }}
+                value={draftStreet.from}
+              />
               <ButtonGroup>
                 <Button
                   variant="primary"
