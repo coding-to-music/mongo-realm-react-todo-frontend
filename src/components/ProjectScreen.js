@@ -119,6 +119,7 @@ function TaskList({ currentProject }) {
             <p>Click the button below to add a task to this project</p>
           </TaskListHeader>
         ) : (
+          <h1>Tasks</h1>
           tasks.map((task) => (
             <ListItem key={task._id}>
               <Card onClick={() => setSelectedTaskId(task._id)}>
@@ -202,6 +203,7 @@ function StreetList({ currentProject }) {
             <p>Click the button below to add a street to this project</p>
           </StreetListHeader>
         ) : (
+          <h1>Streets</h1>
           streets.map((street) => (
             <ListItem key={street._id}>
               <Card onClick={() => setSelectedStreetId(street._id)}>
