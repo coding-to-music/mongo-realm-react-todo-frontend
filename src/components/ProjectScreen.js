@@ -27,8 +27,6 @@ export default function ProjectScreen({
         isEditingPermissions={isEditingPermissions}
         setIsEditingPermissions={setIsEditingPermissions}
       />
-    </Container>
-    <Container>
     {currentProject && <StreetList currentProject={currentProject} />}
     <EditPermissionsModal
       isEditingPermissions={isEditingPermissions}
