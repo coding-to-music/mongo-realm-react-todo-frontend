@@ -8,7 +8,7 @@ const GetAllStreetsQuery = gql`
     streets(query: { _partition: $partition }) {
       _id
       name
-      status
+      width
     }
   }
 `;
