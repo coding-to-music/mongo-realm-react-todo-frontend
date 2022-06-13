@@ -27,13 +27,13 @@ export default function ProjectScreen({
         isEditingPermissions={isEditingPermissions}
         setIsEditingPermissions={setIsEditingPermissions}
       />
-    {currentProject && <StreetList currentProject={currentProject} />}
-    <EditPermissionsModal
-      isEditingPermissions={isEditingPermissions}
-      setIsEditingPermissions={setIsEditingPermissions}
-    />
-  </Container>
-);
+      {currentProject && <StreetList currentProject={currentProject} />}
+      <EditPermissionsModal
+        isEditingPermissions={isEditingPermissions}
+        setIsEditingPermissions={setIsEditingPermissions}
+      />
+    </Container>
+  );
 }
 
 const Container = styled.div`
@@ -112,6 +112,9 @@ function TaskList({ currentProject }) {
     <Loading />
   ) : (
     <>
+      <TaskListHeader>
+        <h1>Tasks</h1>
+      </TaskListHeader>
       <List>
         {tasks.length === 0 ? (
           <TaskListHeader>
@@ -119,16 +122,18 @@ function TaskList({ currentProject }) {
             <p>Click the button below to add a task to this project</p>
           </TaskListHeader>
         ) : (
-          <TaskListHeader>
-          <h1>Tasks</h1>
-          </TaskListHeader>,
+          ((
+            <TaskListHeader>
+              <h1>Tasks</h1>
+            </TaskListHeader>
+          ),
           tasks.map((task) => (
             <ListItem key={task._id}>
               <Card onClick={() => setSelectedTaskId(task._id)}>
                 <TaskContent task={task} />
               </Card>
             </ListItem>
-          ))
+          )))
         )}
         {draftTask ? (
           <ListItem>
@@ -205,16 +210,18 @@ function StreetList({ currentProject }) {
             <p>Click the button below to add a street to this project</p>
           </StreetListHeader>
         ) : (
-          <StreetListHeader>
-          <h1>Streets</h1>
-          </StreetListHeader>,
+          ((
+            <StreetListHeader>
+              <h1>Streets</h1>
+            </StreetListHeader>
+          ),
           streets.map((street) => (
             <ListItem key={street._id}>
               <Card onClick={() => setSelectedStreetId(street._id)}>
                 <StreetContent street={street} />
               </Card>
             </ListItem>
-          ))
+          )))
         )}
         {draftStreet ? (
           <ListItem>
@@ -222,7 +229,7 @@ function StreetList({ currentProject }) {
               <TextInput
                 type="text"
                 aria-labelledby="street description"
-                placeholder="Do the dishes"
+                placeholder="Washington (Name of Street)"
                 onChange={(e) => {
                   setDraftStreetName(e.target.value);
                 }}

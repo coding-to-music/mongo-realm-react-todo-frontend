@@ -10,6 +10,17 @@ export default function useStreetMutations(project) {
   };
 }
 
+// name
+// from
+// to
+// width
+// length
+// date
+// noncity
+// area
+// created_at
+// updated_at
+
 // TODO: Add the GraphGL mutation for adding a street.
 const AddStreetMutation = gql`
   mutation AddStreet($street: StreetInsertInput!) {
@@ -17,6 +28,15 @@ const AddStreetMutation = gql`
       _id
       _partition
       name
+      from
+      to
+      width
+      length
+      date
+      noncity
+      area
+      created_at
+      updated_at
       status
     }
   }
@@ -29,6 +49,14 @@ const UpdateStreetMutation = gql`
       _id
       _partition
       name
+      from
+      to
+      width
+      length
+      date
+      noncity
+      area
+      updated_at
       status
     }
   }
@@ -50,8 +78,17 @@ const StreetFieldsFragment = gql`
   fragment StreetFields on Street {
     _id
     _partition
-    status
     name
+    from
+    to
+    width
+    length
+    date
+    noncity
+    area
+    created_at
+    updated_at
+    status
   }
 `;
 

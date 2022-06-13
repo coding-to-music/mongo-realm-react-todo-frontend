@@ -2,13 +2,46 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 import gql from "graphql-tag";
 
+// "_id": {
+// "_partition": {
+// "name": {
+// "from": {
+// "to": {
+// "width": {
+// "length": {
+// "date": {
+// "noncity": {
+// "area": {
+// "created_at": {
+// "updated_at": {
+//
+// name;
+// from;
+// to;
+// width;
+// length;
+// date;
+// noncity;
+// area;
+// created_at;
+// updated_at;
+
 // TODO: Add the GraphGL query for fetching all tasks.
 const GetAllStreetsQuery = gql`
   query GetAllStreetsForProject($partition: String!) {
     streets(query: { _partition: $partition }) {
       _id
       name
+      from
+      to
       width
+      length
+      date
+      noncity
+      area
+      created_at
+      updated_at
+      status
     }
   }
 `;
