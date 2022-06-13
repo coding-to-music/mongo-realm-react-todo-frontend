@@ -205,7 +205,9 @@ function StreetList({ currentProject }) {
             <p>Click the button below to add a street to this project</p>
           </StreetListHeader>
         ) : (
+          <StreetListHeader>
           <h1>Streets</h1>
+          </StreetListHeader>,
           streets.map((street) => (
             <ListItem key={street._id}>
               <Card onClick={() => setSelectedStreetId(street._id)}>
