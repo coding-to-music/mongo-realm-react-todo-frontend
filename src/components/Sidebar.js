@@ -18,6 +18,7 @@ export default function Sidebar({
     <SidebarContainer>
       <Card>
         <SectionHeading>Projects</SectionHeading>
+        <SectionHeading>Projects</SectionHeading>
         <SectionList>
           {projects.map((project) => (
             <SectionListItem
@@ -29,6 +30,70 @@ export default function Sidebar({
             </SectionListItem>
           ))}
         </SectionList>
+        <SectionList>
+          {projects.map((project) => (
+            <SectionListItem
+              key={project.partition}
+              onClick={() => setCurrentProject(project)}
+              isSelected={project.partition === currentProject?.partition}
+            >
+              {project.name}
+            </SectionListItem>
+          ))}
+        </SectionList>
+        <UserDetails
+          user={app.currentUser}
+          handleLogout={() => {
+            app.logOut();
+          }}
+          handleEditPermissions={() => {
+            setIsEditingPermissions(true);
+          }}
+        />
+        <UserDetails
+          user={app.currentUser}
+          handleLogout={() => {
+            app.logOut();
+          }}
+          handleEditPermissions={() => {
+            setIsEditingPermissions(true);
+          }}
+        />
+      </Card>
+      <Card>
+        <SectionHeading>Projects</SectionHeading>
+        <SectionHeading>Projects</SectionHeading>
+        <SectionList>
+          {projects.map((project) => (
+            <SectionListItem
+              key={project.partition}
+              onClick={() => setCurrentProject(project)}
+              isSelected={project.partition === currentProject?.partition}
+            >
+              {project.name}
+            </SectionListItem>
+          ))}
+        </SectionList>
+        <SectionList>
+          {projects.map((project) => (
+            <SectionListItem
+              key={project.partition}
+              onClick={() => setCurrentProject(project)}
+              isSelected={project.partition === currentProject?.partition}
+            >
+              {project.name}
+            </SectionListItem>
+          ))}
+        </SectionList>
+        <UserDetails
+          user={app.currentUser}
+          handleLogout={() => {
+            app.logOut();
+          }}
+          handleEditPermissions={() => {
+            setIsEditingPermissions(true);
+          }}
+        />
         <UserDetails
           user={app.currentUser}
           handleLogout={() => {

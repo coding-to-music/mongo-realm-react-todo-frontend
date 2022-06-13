@@ -18,7 +18,6 @@ export default function App() {
       <RequireLoggedInUser>
         <RealmApolloProvider>
           <TaskApp />
-          <TaskApp />
         </RealmApolloProvider>
       </RequireLoggedInUser>
     </RealmAppProvider>
