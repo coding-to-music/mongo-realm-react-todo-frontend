@@ -3,7 +3,6 @@ import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 import { useRealmApp } from "../RealmApp";
 import useProjects from "../graphql/useProjects";
-import useStreets from "../graphql/useStreets";
 import Card from "./Card";
 import { uiColors } from "@leafygreen-ui/palette";
 
@@ -15,7 +14,6 @@ export default function Sidebar({
   setIsEditingPermissions,
 }) {
   const projects = useProjects();
-  const streets = useStreets();
   const app = useRealmApp();
 
   return (
@@ -42,29 +40,6 @@ export default function Sidebar({
             setIsEditingPermissions(true);
           }}
         />
-      </Card>
-      <Card>
-        <SectionHeading>Streets</SectionHeading>
-        <SectionList>
-          {streets.map((street) => (
-            <SectionListItem
-              key={street.partition}
-              onClick={() => setCurrentStreet(street)}
-              isSelected={street.partition === currentStreet?.partition}
-            >
-              {street.name}
-            </SectionListItem>
-          ))}
-        </SectionList>
-        {/* <UserDetails
-          user={app.currentUser}
-          handleLogout={() => {
-            app.logOut();
-          }}
-          handleEditPermissions={() => {
-            setIsEditingPermissions(true);
-          }}
-        /> */}
       </Card>
     </SidebarContainer>
   );
