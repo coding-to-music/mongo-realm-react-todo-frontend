@@ -24,18 +24,18 @@ export default function useStreets() {
   const streets = mongodb.db("blogr-nextjs-prisma-postgres").collection("street");
   
   // set asynchronous event watcher to react to any changes in the users collection
-  React.useEffect(() => {
-    let changeWatcher;
-    (async () => {
-      changeWatcher = streets.watch();
-      for await (const change of changeWatcher) {
-        setStreetsFromChange(change, setStreets);
-      }
-    })();
+  // React.useEffect(() => {
+  //   let changeWatcher;
+  //   (async () => {
+  //     changeWatcher = streets.watch();
+  //     for await (const change of changeWatcher) {
+  //       setStreetsFromChange(change, setStreets);
+  //     }
+  //   })();
 
-    // close connection when component unmounts
-    return () => changeWatcher.return();
-  });
+  //   // close connection when component unmounts
+  //   return () => changeWatcher.return();
+  // });
 
   return streets;
 }
