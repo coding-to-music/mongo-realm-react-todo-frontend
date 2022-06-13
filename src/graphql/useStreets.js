@@ -13,12 +13,12 @@ function setStreetsFromChange(change, setStreets) {
 
 export default function useStreets() {
   const app = useRealmApp();
-  const [streets, setStreets] = React.useState(
-    app.currentUser.customData.memberOf
-  );
-  if (!app.currentUser) {
-    throw new Error("Cannot list streets if there is no logged in user.");
-  }
+  // const [streets, setStreets] = React.useState(
+  //   app.currentUser.customData.memberOf
+  // );
+  // if (!app.currentUser) {
+  //   throw new Error("Cannot list streets if there is no logged in user.");
+  // }
   const mongodb = app.currentUser.mongoClient("mongodb-atlas");
   // const users = mongodb.db("tracker").collection("User");
   const streets = mongodb.db("blogr-nextjs-prisma-postgres").collection("street");
