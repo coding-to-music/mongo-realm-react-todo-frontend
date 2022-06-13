@@ -196,6 +196,7 @@ function StreetList({ currentProject }) {
     createDraftStreet,
     deleteDraftStreet,
     setDraftStreetName,
+    setDraftStreetFrom,
     submitDraftStreet,
   } = useDraftStreet({ addStreet });
 
